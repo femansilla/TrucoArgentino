@@ -1,0 +1,275 @@
+# depslib dependency file v1.0
+1511258500 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsaudio.cpp
+	"clsAudio.h"
+
+1511258508 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsaudio.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258506 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\adnconsts.h
+	<SDL/SDL.h>
+	<SDL/SDL_video.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_mixer.h>
+	<SDL.h>
+	<SDL_video.h>
+	"SDL_image.h"
+	"SDL_ttf.h"
+	"SDL_mixer.h"
+
+1511258556 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clserror.h
+
+1511258502 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsdot.cpp
+	"clsDot.h"
+
+1511258506 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsdot.h
+	"adnConsts.h"
+
+1511258512 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clserror.cpp
+	<cstring>
+	<iostream>
+	"clsError.h"
+
+1511258556 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsevent.cpp
+	"clsEvent.h"
+
+1511258558 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsevent.h
+	"adnConsts.h"
+
+1511258510 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsimage.cpp
+	"clsImage.h"
+
+1511258514 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsimage.h
+	"adnConsts.h"
+	"clsError.h"
+
+1511258516 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clslog.cpp
+	"clsLog.h"
+
+1511258518 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clslog.h
+	<cstdio>
+
+1511258520 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsmode.cpp
+	"clsMode.h"
+
+1511258522 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsmode.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258524 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsmusic.cpp
+	"clsMusic.h"
+
+1511258526 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsmusic.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258528 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsrandom.cpp
+	"clsRandom.h"
+
+1511258532 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsrandom.h
+	<ctime>
+	<cstdlib>
+	<iostream>
+
+1511258534 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsscreen.cpp
+	"clsScreen.h"
+
+1511258538 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clsscreen.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258540 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clssoundeffect.cpp
+	"clsSoundEffect.h"
+
+1511258542 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clssoundeffect.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258544 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clssprite.cpp
+	"clsSprite.h"
+
+1511258546 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clssprite.h
+	<iostream>
+	<cstring>
+	"adnConsts.h"
+	"clsError.h"
+	"clsDot.h"
+	"clsImage.h"
+	"clsDot.h"
+	"clsScreen.h"
+
+1511258550 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clstext.cpp
+	"clsText.h"
+
+1511258550 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clstext.h
+	<iostream>
+	"adnConsts.h"
+	"clsError.h"
+
+1511258552 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clstimer.cpp
+	"clsTimer.h"
+
+1511258554 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\adn-x\clstimer.h
+	"clsEvent.h"
+
+1511258498 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\main.cpp
+	<iostream>
+	<adnConsts.h>
+	<clsLog.h>
+	<clsError.h>
+	<clsMotor.h>
+	<clsMaso.h>
+
+1511258662 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsmotor.h
+	<clsError.h>
+	<clsEvent.h>
+	<clsMode.h>
+	<clsScreen.h>
+	<adnConsts.h>
+	<clsText.h>
+	<clsPresentacion.h>
+	<clsMaso.h>
+	<clsButton.h>
+	<clsJuego.h>
+
+1511310045 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clspresentacion.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<adnConsts.h>
+	<clsError.h>
+	<clsFondo.h>
+	<clsButton.h>
+	<clsJuego.h>
+	<clsTimer.h>
+
+1511258650 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsfondo.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<clsError.h>
+	<adnConsts.h>
+	<clsSprite.h>
+
+1511395447 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsbutton.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<adnConsts.h>
+	<clsError.h>
+	<clsCarta.h>
+	<clsSprite.h>
+
+1511258648 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clscarta.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<adnConsts.h>
+	<clsError.h>
+	<cstring>
+	<clsSprite.h>
+
+1511309177 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsjuego.h
+	<clsBaraja.h>
+	<clsError.h>
+	<clsEvent.h>
+	<clsScreen.h>
+	<clsButton.h>
+	<clsMaso.h>
+	<clsMensajes.h>
+	<clsGuardarPartida.h>
+
+1511439484 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsbaraja.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<adnConsts.h>
+	<clsError.h>
+	<clsCarta.h>
+	<clsMaso.h>
+	<clsRandom.h>
+	<stdio.h>
+	<stdlib.h>
+	<clsTimer.h>
+	<clsRonda.h>
+	<clsButton.h>
+	<clsFondo.h>
+	<clsPuntos.h>
+	<clsMensajes.h>
+	<clsGuardarPartida.h>
+
+1511258658 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsmaso.h
+	<clsScreen.h>
+	<clsEvent.h>
+	<clsError.h>
+	<adnConsts.h>
+	<clsSprite.h>
+
+1511258668 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsronda.h
+	<clsCarta.h>
+
+1511258666 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clspuntos.h
+	<clsEvent.h>
+	<clsError.h>
+	<clsScreen.h>
+	<clsSprite.h>
+
+1511258660 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsmensajes.h
+	<clsEvent.h>
+	<clsError.h>
+	<clsScreen.h>
+	<clsSprite.h>
+
+1511309149 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsguardarpartida.h
+	<iostream>
+	<stdio.h>
+	<clsMensajes.h>
+
+1511439586 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbaraja.cpp
+	"clsBaraja.h"
+
+1511395447 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbutton.cpp
+	"clsButton.h"
+
+1511258698 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsenvido.cpp
+	"clsEnvido.h"
+
+1511258652 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsenvido.h
+
+1511258684 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsfondo.cpp
+	"clsFondo.h"
+
+1511357080 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsguardarpartida.cpp
+	"clsGuardarPartida.h"
+
+1511386583 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsjuego.cpp
+	"clsJuego.h"
+
+1511258684 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsjugador.cpp
+	"clsJugador.h"
+
+1511258658 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsjugador.h
+	<clsCarta.h>
+
+1511258686 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsmaso.cpp
+	"clsMaso.h"
+
+1511357083 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsmensajes.cpp
+	"clsMensajes.h"
+
+1511258690 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsmotor.cpp
+	"clsMotor.h"
+
+1511309252 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspresentacion.cpp
+	"clsPresentacion.h"
+
+1511258692 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspuntos.cpp
+	"clsPuntos.h"
+
+1511258696 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsronda.cpp
+	"clsRonda.h"
+
+1511392457 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clscarta.cpp
+	"clsCarta.h"
+
