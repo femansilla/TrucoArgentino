@@ -123,7 +123,7 @@ int clsPuntos::setPath()
         strcpy(puntos,"puntaje30");
         break;
     default:
-        //no mostrar nada.
+        strcpy(puntos,"puntaje0");
         break;
     }
 

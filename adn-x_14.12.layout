@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="src\clsButton.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2889" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="12" />
+			<Collapse line="21" />
+		</Folding>
+	</File>
+	<File name="src\clsMotor.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="827" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="ADN-X\clsSprite.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3858" topLine="55" />
+		</Cursor>
+	</File>
+	<File name="src\clsJuego.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="896" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="src\clsPuntos.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2670" topLine="111" />
+		</Cursor>
+	</File>
+	<File name="ADN-X\clsText.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9904" topLine="264" />
+		</Cursor>
+	</File>
+	<File name="include\clsCarta.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="182" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="src\clsMensajes.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="23" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="13" />
+			<Collapse line="23" />
+		</Folding>
+	</File>
+	<File name="ADN-X\clsSprite.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12105" topLine="275" />
+		</Cursor>
+	</File>
+	<File name="include\clsBaraja.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3116" topLine="117" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7588" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="include\clsButton.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="536" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="include\clsJuego.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="833" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="ADN-X\clsEvent.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5769" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="src\clsBaraja.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7827" topLine="163" />
+		</Cursor>
+		<Folding>
+			<Collapse line="8" />
+			<Collapse line="85" />
+		</Folding>
+	</File>
+	<File name="src\clsCarta.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3393" topLine="154" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="13" />
+		</Folding>
+	</File>
+	<File name="ADN-X\clsScreen.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3913" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="src\clsPresentacion.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="691" topLine="9" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

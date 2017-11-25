@@ -1,6 +1,7 @@
 #ifndef CLSBARAJA_H
 #define CLSBARAJA_H
 #include <clsScreen.h>
+#include <clsText.h>
 #include <clsEvent.h>
 #include <adnConsts.h>
 #include <clsError.h>
@@ -26,6 +27,7 @@ class clsBaraja
         clsRandom random;
         clsTimer tiempo;
         clsFondo fondo;
+        clsText texto;
 
         clsMaso mazo;
         clsCarta cartas_player[3];
@@ -36,6 +38,9 @@ class clsBaraja
         clsRonda ronda;
 
         int i;
+
+        clsPuntos puntuacion_player;
+        clsPuntos puntuacion_com;
 
         int puntos_COM = 0;
         int puntos_player = 0;
@@ -51,6 +56,11 @@ class clsBaraja
         bool canto_falta_envido;
 
         bool canto_truco;
+        bool canto_re_truco;
+        bool canto_vale_4;
+
+        int cantos_truco;
+        int puntos_truco = 0;
 
         int parda_index_mata, parda_index_tira = 0;
         int jugada_index_mata, jugada_index_tira = 0;
@@ -73,6 +83,7 @@ class clsBaraja
         clsButton abandonar; // al mazo
 
         clsButton guardarPartida;
+        clsGuardarPartida guardar_partida;
 
         clsMensajes mensaje;
 
@@ -82,6 +93,9 @@ class clsBaraja
 
     public:
         ~clsBaraja();
+
+        // void juego no va
+        void juego();
 
         int init(clsScreen *, clsEvent */*, clsCarta[][4]*/);
         int run(int);
@@ -101,6 +115,9 @@ class clsBaraja
 
         clsCarta tira_com();
         void jugada_com(int);
+        void primera_ronda_com(int);
+        void segunda_ronda_com();
+        void tercera_ronda_com();
 
         int pensar();
 
@@ -112,13 +129,21 @@ class clsBaraja
         int get_grupo_escala(clsCarta);
         clsCarta buscar_menor();
 
+        void buscar_carta_usada(char *);
+
         int contar_cartas( clsCarta );
 
         void calcularPuntosEnvido(int );
+        void calcularPuntosTruco(int);
 
         int com_decidir_envido();
 
         void jugada_pj(int);
+        void primera_ronda_player(int);
+        void segunda_ronda_player();
+        void tercera_ronda_player();
+
+        int jugar_truco();
 
         void jugar_envido();
         void comparar_tantos();
@@ -126,7 +151,8 @@ class clsBaraja
 
         clsButton getGuardarpartida() {return guardarPartida;}
 
-        int mouseCommand();
+        int mouseCommandEnvido();
+        int mouseCommandTruco();
         int refresh_screen(int);
 
 };

@@ -17,6 +17,8 @@ class clsCarta : public clsSprite
         clsScreen *screen;
         clsError error;
         int numero;
+        bool used;
+        bool mostrar;
         char palo[10] = {0};
         char path[100]= {0};
 
@@ -31,6 +33,12 @@ class clsCarta : public clsSprite
 
         char *getPath(){return path;};
         int setPath();
+
+        bool getUsed(){return used;}
+        void setUsed(int value){ used = value;}
+
+        bool getMostrar(){return mostrar;}
+        void setMostrar(bool value){ mostrar = value;}
 
         void mostrar_init(int, int);
         void mover_carta(int);

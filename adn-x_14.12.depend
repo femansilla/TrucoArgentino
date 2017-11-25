@@ -163,7 +163,7 @@
 	<clsCarta.h>
 	<clsSprite.h>
 
-1511258648 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clscarta.h
+1511489244 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clscarta.h
 	<clsScreen.h>
 	<clsEvent.h>
 	<adnConsts.h>
@@ -181,8 +181,9 @@
 	<clsMensajes.h>
 	<clsGuardarPartida.h>
 
-1511439484 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsbaraja.h
+1511483433 c:\users\francisco mansilla\downloads\prueba adn-x5 v2\include\clsbaraja.h
 	<clsScreen.h>
+	<clsText.h>
 	<clsEvent.h>
 	<adnConsts.h>
 	<clsError.h>
@@ -226,10 +227,10 @@
 	<stdio.h>
 	<clsMensajes.h>
 
-1511439586 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbaraja.cpp
+1511492358 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbaraja.cpp
 	"clsBaraja.h"
 
-1511395447 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbutton.cpp
+1511463982 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsbutton.cpp
 	"clsButton.h"
 
 1511258698 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsenvido.cpp
@@ -243,7 +244,7 @@
 1511357080 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsguardarpartida.cpp
 	"clsGuardarPartida.h"
 
-1511386583 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsjuego.cpp
+1511488416 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsjuego.cpp
 	"clsJuego.h"
 
 1511258684 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsjugador.cpp
@@ -261,15 +262,15 @@
 1511258690 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsmotor.cpp
 	"clsMotor.h"
 
-1511309252 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspresentacion.cpp
+1511485831 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspresentacion.cpp
 	"clsPresentacion.h"
 
-1511258692 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspuntos.cpp
+1511465842 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clspuntos.cpp
 	"clsPuntos.h"
 
 1511258696 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clsronda.cpp
 	"clsRonda.h"
 
-1511392457 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clscarta.cpp
+1511492152 source:c:\users\francisco mansilla\downloads\prueba adn-x5 v2\src\clscarta.cpp
 	"clsCarta.h"
 

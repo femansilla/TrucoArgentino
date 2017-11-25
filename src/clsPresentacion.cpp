@@ -23,8 +23,6 @@ int clsPresentacion::init(clsScreen *scr, clsEvent *ev)
 
     error.set(juego.init(screen, event));
     if (error.get()) return error.get();
-
-    return error.get();
 }
 
 int clsPresentacion::run()

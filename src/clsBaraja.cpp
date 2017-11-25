@@ -13,6 +13,12 @@ int clsBaraja::init(clsScreen *scr, clsEvent *ev/*, clsCarta escal[14][4]*/)
     cout << "Baraja iniciada correctamente."<< endl;
     random.init();
 
+    error.set(texto.init());
+    if (error.get()) return error.get();
+    error.set(texto.loadFont("FONTS/Griffy-Regular.ttf", 36));
+    if (error.get()) return error.get();
+    texto.setFontColor(WHITE);
+
     error.set(fondo.init(screen, event));
     if (error.get()) return error.get();
 
@@ -60,6 +66,12 @@ int clsBaraja::init(clsScreen *scr, clsEvent *ev/*, clsCarta escal[14][4]*/)
     if (error.get()) return error.get();
 
     error.set(guardarPartida.init(screen, event));
+    if (error.get()) return error.get();
+
+    error.set(puntuacion_com.init(screen, event));
+    if (error.get()) return error.get();
+
+    error.set(puntuacion_player.init(screen, event));
     if (error.get()) return error.get();
 
 //    ronda.set_escala(escala);
@@ -171,6 +183,11 @@ int clsBaraja::run(int flag)
 
     fondo.panio();
 
+    texto.write("COM", 20, 10, screen->getPtr());
+    texto.write("PLAYER", 130, 10, screen->getPtr());
+//    puntuacion_com.mostrar(20,50);
+//    puntuacion_player.mostrar(150,50);
+
     quiereEnvido.setButton(18);
     error.set(quiereEnvido.setPath());
     if (error.get()) return error.get();
@@ -180,7 +197,11 @@ int clsBaraja::run(int flag)
     if (error.get()) return error.get();
 
     quiereTruco.setButton(18);
+    error.set(quiereTruco.setPath());
+    if (error.get()) return error.get();
     noQuiereTruco.setButton(19);
+    error.set(noQuiereTruco.setPath());
+    if (error.get()) return error.get();
 
     envido.setButton(1);
     error.set(envido.setPath());
@@ -249,16 +270,18 @@ void clsBaraja::mostrar_cartas_com(int flag)
     {
         numaux = cartas_com[i].getNumero();
 
-        if(flag == 1)
+        if( flag && cartas_com[i].getMostrar() )
+        {
+            cartas_com[i].mover_carta_com(i);
             cartas_com[i].mostrar_jugada(i, 1);
-        else
+        }
+         else
         {
             cartas_com[i].setNumero(15);
             cartas_com[i].setPath();
             cartas_com[i].mostrar_init(i, 1);
             cartas_com[i].setNumero(numaux);
         }
-
     }
 }
 
@@ -604,8 +627,8 @@ int clsBaraja::com_decidir_envido()
                     mensaje.setPath();
                     mensaje.mostrar(640, 250);
                     screen->refresh();
-                    tiempo.wait(2*100);
-                    calcularPuntosEnvido(2);
+                    tiempo.wait(4*100);
+                    //calcularPuntosEnvido(2);
                     comparar_tantos();
                     return true;
                 }
@@ -861,17 +884,35 @@ clsCarta clsBaraja::buscar_menor()
 {
     if(ronda.get_altura(cartas_com[0]) >= ronda.get_altura(cartas_com[1]) &&
             ronda.get_altura(cartas_com[0]) >= ronda.get_altura(cartas_com[2]))
-        return cartas_com[0];
+            {
+                cartas_com[0].setMostrar(true);
+                return cartas_com[0];
+            }
 
     if(ronda.get_altura(cartas_com[1]) >= ronda.get_altura(cartas_com[0]) &&
             ronda.get_altura(cartas_com[1]) >= ronda.get_altura(cartas_com[2]))
-        return cartas_com[1];
+            {
+                cartas_com[1].setMostrar(true);
+                return cartas_com[1];
+            }
 
     if (ronda.get_altura(cartas_com[2]) >= ronda.get_altura(cartas_com[0]) &&
             ronda.get_altura(cartas_com[2]) >= ronda.get_altura(cartas_com[1]))
-        return cartas_com[2];
-
+            {
+                cartas_com[2].setMostrar(true);
+                return cartas_com[2];
+            }
 }
+
+void clsBaraja::buscar_carta_usada(char *carta_used)
+{
+    for(int i = 0; i < 3; i++)
+    {
+        if(strcmp(cartas_com[i].getPath(),carta_used) == 0)
+            cartas_com[i].setUsed(true);
+    }
+}
+
 
 clsCarta clsBaraja::tira_com()
 {
@@ -890,89 +931,103 @@ clsCarta clsBaraja::tira_com()
         switch (grupo)
         {
         case 1:
-        {
             //escala_divida[i][grupo - 1];
             grupo_1++;
-
-        }
         break;
 
         case 2:
-        {
             //escala_divida[i][grupo - 1];
             grupo_2++;
-        }
         break;
 
-
         case 3:
-        {
             //escala_divida[i][grupo - 1];
             grupo_3++;
-        }
         break;
 
         case 4:
-        {
             //escala_divida[i][grupo - 1];
             grupo_4++;
-        }
         break;
 
         }
     }
+    int index = 0;
     clsCarta carta_tira;
 
-    if(grupo_1 == 3)
-        return carta_tira = buscar_menor();
+    if(grupo_1 == 3 )
+    {
+        carta_tira = buscar_menor();
+        return carta_tira;
+    }
 
     if( grupo_2 == 3 ||
         grupo_3 == 3 ||
         grupo_4 == 3 )
-            return carta_tira = cartas_com[random.getNumber(3)];
-
-    int index = 0;
+        {
+            index = random.getNumber(3);
+            cartas_com[index].setMostrar(true);
+            carta_tira = cartas_com[index];
+            return carta_tira;
+        }
 
     while( true )
     {
         index = random.getNumber(3);
         if(! (get_grupo_escala(cartas_com[index]) == 1))
         {
-            carta_tira = cartas_com[index];
-            break;
+            if(!cartas_com[index].getUsed())
+            {
+                carta_tira = cartas_com[index];
+                carta_tira.setMostrar(true);
+                cartas_com[index].setMostrar(true);
+                break;
+            }
         }
     }
     return carta_tira;
 }
-
 void clsBaraja::jugada_com(int mano)
 {
+    if (mano == 0)
+    {
+        switch(i)
+        {
+            case 1:
+                primera_ronda_com(mano);
+            break;
+            case 2:
+                segunda_ronda_com();
+            break;
+            case 3:
+                tercera_ronda_com();
+            break;
+            default:
+                break;
+        }
+
+    }
     if (mano == 1)
     {
-        if( i == 1)
+        switch(i)
         {
-            if(regla_envido())
-            {
-                puntos_COM += puntosEnvido;
-                tiempo.wait(2*100);
-                //jugada_player(flag) //flag para habilitar los botones si se retruco envido o truco.
-                tiempo.wait(2*100);
-            }
-            else
-            {
-                tiempo.wait(2*100);
-                mensaje.setMessage(10);
-                mensaje.setPath();
-                mensaje.mostrar(640, 250);
-                tiempo.wait(2*100);
-            }
-
-
-            if(case_envido == 0)
-            {
-                tira_com();  //necesito que saber que carta mover de com, con un index.
-            }
+            case 1:
+                primera_ronda_com(mano);
+            break;
+            case 2:
+                segunda_ronda_com();
+            break;
+            case 3:
+                tercera_ronda_com();
+            break;
+            default:
+                break;
         }
+//
+//        if( i == 1)
+//        {
+//
+//        }
 
     }
     else
@@ -988,30 +1043,86 @@ void clsBaraja::jugada_com(int mano)
 //                screen->refresh();
 //                tiempo.wait(2*100);
             }
-        if(regla_envido() == 0)
-            {
-                tiempo.wait(2*100);
-                mensaje.setMessage(10);
-                mensaje.setPath();
-                mensaje.mostrar(640, 250);
-                screen->refresh();
-                tiempo.wait(2*100);
-            }
+//        if(regla_envido() == 0)
+//            {
+//                tiempo.wait(2*100);
+//                mensaje.setMessage(10);
+//                mensaje.setPath();
+//                mensaje.mostrar(640, 250);
+//                screen->refresh();
+//                tiempo.wait(2*100);
+//            }
 
         //ver carta pj
-        carta_player_selected;
+//        carta_player_selected;
 
     }
 
 
-//
 //    int var_pensar = contar_cartas();
 //    carta_com_selected = cartas_com[var_pensar];
 //    cartas_com[var_pensar].setPath();
 //    cartas_com[var_pensar].mover_carta_com(var_pensar);
 }
+void clsBaraja::primera_ronda_com(int manoParaEnvido)
+{
+    if(manoParaEnvido)
+    {
+        if(regla_envido())
+        {
+            puntos_COM += puntosEnvido;
+//            tiempo.wait(2*100);
+//
+//            jugada_player(flag) //flag para habilitar los botones si se retruco envido o truco.
+//            tiempo.wait(2*100);
+        }
+//        else
+//        {
+//            tiempo.wait(2*100);
+//            mensaje.setMessage(10);
+//            mensaje.setPath();
+//            mensaje.mostrar(640, 250);
+//            tiempo.wait(2*100);
+//        }
 
-int clsBaraja::mouseCommand()
+        if(case_envido == 0)
+        {
+            tira_com();  //necesito que saber que carta mover de com, con un index.
+        }
+    }
+    else
+        {
+            carta_com_selected = tira_com();
+            //mostrar_cartas_com(1);
+        }
+}
+
+void clsBaraja::segunda_ronda_com()
+{
+    envido.disabled();
+    envido.mostrar(76, 590);
+    real_envido.disabled();
+    real_envido.mostrar(227, 590);
+    falta_envido.disabled();
+    falta_envido.mostrar(378, 590);
+
+    buscar_carta_usada(carta_com_selected.getPath());
+
+    jugar_truco();
+
+    carta_com_selected = tira_com();
+    //mostrar_cartas_com(1);
+
+
+
+}
+void clsBaraja::tercera_ronda_com()
+{
+
+}
+
+
+int clsBaraja::mouseCommandEnvido()
 {
         if(noQuiereEnvido.pressed())
         {
@@ -1019,16 +1130,37 @@ int clsBaraja::mouseCommand()
             return 0;
         }
 
+        if(quiereEnvido.pressed())
+        {
+            comparar_tantos();
+            return 1;
+        }
+
         if(abandonar.pressed())
         {
             puntos_COM += cantos_envido; // + puntos truco  ;
             return 2;
         }
-
-        if(quiereEnvido.pressed())
+}
+int clsBaraja::mouseCommandTruco()
+{
+        if(noQuiereTruco.pressed())
         {
-            comparar_tantos();
+            puntos_COM += cantos_truco;
+            return 0;
+        }
+
+        if(quiereTruco.pressed())
+        {
+            //comparar_tantos();
             return 1;
+        }
+
+        if(abandonar.pressed())
+        {
+
+            //puntos_COM += cantos_envido; // + puntos truco  ;
+            return 2;
         }
 }
 
@@ -1045,40 +1177,44 @@ void clsBaraja::jugar_envido()
         {
             if (envido.pressed())
             {
+                envido.disabled();
+                envido.mostrar(76, 590);
                 case_envido = 0;
                 envido.setUsed(true);
             }
-
-
             if (real_envido.pressed())
             {
+                envido.disabled();
+                envido.mostrar(76, 590);
+                real_envido.disabled();
+                real_envido.mostrar(227, 590);
                 case_envido = 2;
                 real_envido.setUsed(true);
             }
 
             if(falta_envido.pressed())
             {
+                envido.disabled();
+                envido.mostrar(76, 590);
+                real_envido.disabled();
+                real_envido.mostrar(227, 590);
+                falta_envido.disabled();
+                falta_envido.mostrar(378, 590);
                 case_envido = 3;
                 falta_envido.setUsed(true);
             }
 
-
-            envido.disabled();
-            real_envido.disabled();
-            falta_envido.disabled();
-            envido.mostrar(76, 590);
             canto_envido = true;
 
             if( com_decidir_envido() == 2 )
             {
-                quiereEnvido.mostrar(320, 258);
-                noQuiereEnvido.mostrar(320, 458);
-                screen->refresh();
-    //
+                quiereEnvido.mostrar(420, 258);
+                noQuiereEnvido.mostrar(420, 458);
+
                 while(true)
                 {
-                    if(mouseCommand() != 2)
-                        break;
+//                    if(mouseCommandEnvido() != 2)
+//                        break;
 
                     if( case_envido == 1 )
                     {
@@ -1136,6 +1272,9 @@ void clsBaraja::jugar_envido()
                         falta_envido.mostrar(378, 590);
 
                     }
+
+                    if(mouseCommandEnvido() != 2)
+                        break;
                 }
 
     //         if(quiereEnvido.pressed())
@@ -1147,11 +1286,70 @@ void clsBaraja::jugar_envido()
     //           continue;
         }
     }
+}
+int clsBaraja::jugar_truco()
+{
+    if( ! truco.get_used() &&
+        ! re_truco.get_used() &&
+        ! vale_4.get_used() )
+        {
+                if(truco.pressed())
+                    {
+                        calcularPuntosTruco(0);
+                        truco.setUsed(true);
+                        truco.disabled();
+                        truco.mostrar(76, 666);
+                        canto_truco = true;
+                        return 0; // truco
+                    }
+        }
 
+    if( ! re_truco.get_used() &&
+        ! vale_4.get_used())
+    {
+        while(! re_truco.get_used())
+        {
+            if(re_truco.pressed())
+                {
+                    calcularPuntosTruco(1);
+                    re_truco.setUsed(true);
+                    re_truco.disabled();
+                    re_truco.mostrar(76, 666);
+                    canto_truco = true;
+                    return 1; // re truco
+                }
+            if (mouseCommandTruco() != 1)
+                break;
+            else
+                break;
+        }
 
+    }
+
+    if( ! vale_4.get_used())
+    {
+        while(! vale_4.get_used())
+        {
+            if(vale_4.pressed())
+            {
+                calcularPuntosTruco(2);
+                vale_4.setUsed(true);
+                vale_4.disabled();
+                vale_4.mostrar(76, 666);
+                canto_truco = true;
+                return 2; // vale 4
+            }
+
+            if (mouseCommandTruco() != 1)
+                break;
+            else
+                break;
+        }
+    }
 }
 
-void clsBaraja::jugada_pj(int ron)
+
+void clsBaraja::primera_ronda_player(int manoParaEnvido)
 {
     while( true )
     {
@@ -1159,6 +1357,15 @@ void clsBaraja::jugada_pj(int ron)
         {
             if(event->getEventType() == MOUSE_DOWN)  //Verifico si hay evento de teclado EventType()
             {
+                if(guardarPartida.pressed())
+                    break;
+
+                if(abandonar.pressed())
+                {
+                    cout << "Se fue al mazo";
+                    break;
+                }
+
                 if(carta_pressed(event->getCursorX(), event->getCursorY()))
                 {
                     canto_envido = false;
@@ -1168,46 +1375,108 @@ void clsBaraja::jugada_pj(int ron)
 
                 jugar_envido();
 
-                if(truco.pressed())
-                {
-                    truco.disabled();
-                    truco.mostrar(76, 666);
-                    canto_truco = true;
-                    break;
-                }
-
-                if(abandonar.pressed())
-                {
-                    break;
-                    cout << "Se fue al mazo";
-                }
-
-                if(guardarPartida.pressed())
-                    break;
+                jugar_truco();
             }
         }
-        screen->refresh();
     }
+    screen->refresh();
+}
+void clsBaraja::segunda_ronda_player()
+{
+
+}
+void clsBaraja::tercera_ronda_player()
+{
+
+}
+
+
+void clsBaraja::jugada_pj(int ron)
+{
+    switch(ron)
+    {
+        case 1:
+            primera_ronda_player(ron);
+        break;
+        case 2:
+            segunda_ronda_player();
+        break;
+        case 3:
+            tercera_ronda_player();
+        break;
+        default:
+            break;
+    }
+//    while( true )
+//    {
+//        if(event->wasEvent())  //Verifico si hay evento
+//        {
+//            if(event->getEventType() == MOUSE_DOWN)  //Verifico si hay evento de teclado EventType()
+//            {
+//                if(carta_pressed(event->getCursorX(), event->getCursorY()))
+//                {
+//                    canto_envido = false;
+//                    canto_truco = false;
+//                    break;
+//                }
+//
+//                jugar_envido();
+//
+//                jugar_truco();
+//
+//                if(abandonar.pressed())
+//                {
+//                    break;
+//                    cout << "Se fue al mazo";
+//                }
+//
+//                if(guardarPartida.pressed())
+//                    break;
+//            }
+//        }
+//        screen->refresh();
+//    }
 }
 
 int clsBaraja::mano(int vuelta)
 {
     tantos_player = getTanto(cartas_player);
     tantos_com = getTanto(cartas_com);
-    i++;
-//    for (i = 1; i<4; i++)
-//    {
+
+    for (i = 1; i<4; i++)
+    {
         manita = vuelta;
 
         if(i % 2)
         {
-            jugada_pj(i);
-            refresh_screen(0);
-            jugada_com(0);
-            refresh_screen(0);
+            if(i == 3 )
+            {
+                jugada_pj(i);
+                refresh_screen(0);
+                jugada_com(0);
+                refresh_screen(0);
+                cout<< "Tercera ronda\n";
+                break;
+            }
+
+            if(i == 2)
+            {
+                jugada_com(1);
+                refresh_screen(1);
+                jugada_pj(i);
+                refresh_screen(0);
+                cout << "Segunda ronda\n";
+                continue;
+            }
 
             if(i == 1)
             {
+                jugada_pj(i);
+                refresh_screen(0);
+                jugada_com(0);
+                refresh_screen(1);
+                cout << "primera ronda player mano\n";
+                continue;
     //            envido.enabled();
     //            truco.enabled();
     //            envido.setButton(1);
@@ -1222,15 +1491,40 @@ int clsBaraja::mano(int vuelta)
         // 20 truco
         // 21 re truco
         // 22 vale 4truco.pressed();
-        i++;
+//        i++;
         }
         else
         {
-            jugada_com(1);
-            refresh_screen(0);
-            jugada_pj(i);
-            refresh_screen(0);
-            i++;
+            if(i == 3)
+            {
+                jugada_pj(i);
+                refresh_screen(0);
+                jugada_com(1);
+                refresh_screen(0);
+                cout<< "tercera ronda\n";
+                break;
+            }
+
+            if(i == 2)
+            {
+                jugada_com(0);
+                refresh_screen(0);
+                jugada_pj(i);
+                refresh_screen(0);
+                cout<< "segunda ronda\n";
+                continue;
+            }
+
+            if(i == 1)
+            {
+                jugada_com(1);
+                refresh_screen(0);
+                jugada_pj(i);
+                refresh_screen(0);
+                cout<< "primera ronda com mano\n";
+                continue;
+            }
+
         }
 
 //        ronda.init(carta_com_selected, carta_player_selected)
@@ -1248,7 +1542,7 @@ int clsBaraja::mano(int vuelta)
 //            break;
 //        if (com.get_event() == 0)
 //            break;
-//    }
+    }
 }
 
 void clsBaraja::calcularPuntosEnvido(int modoEnvido)
@@ -1256,7 +1550,7 @@ void clsBaraja::calcularPuntosEnvido(int modoEnvido)
     switch(modoEnvido)
     {
     case 0:
-        puntosEnvido += 2;
+        puntosEnvido = 2;
 //        setPuntoEnvido(2);
         break;
     case 1:
@@ -1275,6 +1569,23 @@ void clsBaraja::calcularPuntosEnvido(int modoEnvido)
     cantos_envido++;
 }
 
+void clsBaraja::calcularPuntosTruco(int modoTruco)
+{
+    switch(modoTruco)
+    {
+    case 0:
+        puntos_truco += 2;
+        break;
+    case 1:
+        puntos_truco += 3;
+        break;
+    case 2:
+        puntos_truco += 4;
+        break;
+    }
+    cantos_truco++;
+}
+
 int clsBaraja::refresh_screen(int flag)
 {
     screen->clean(BLACK);
@@ -1290,8 +1601,53 @@ int clsBaraja::refresh_screen(int flag)
 
     guardarPartida.mostrar(1100, 50);
 
-    mostrar_cartas(1);
+    texto.write("COM", 20, 10, screen->getPtr());
+    texto.write("PLAYER", 130, 10, screen->getPtr());
+
+    puntuacion_com.setPuntaje(puntos_COM);
+    puntuacion_com.setPath();
+    puntuacion_com.mostrar(20,50);
+
+    puntuacion_player.setPuntaje(puntos_player);
+    puntuacion_player.setPath();
+    puntuacion_player.mostrar(150,50);
+
+    mostrar_cartas(flag);
     mazo.mostrar_mazo(flag);
 
     screen->refresh();
+}
+void clsBaraja::juego()
+{
+    bool vuelta = true;
+    int vuelta_mano = 0;
+
+    while(vuelta)
+    {
+        darCartas();
+
+        run(0);
+
+        mano(vuelta_mano % 2);
+
+        if(guardarPartida.pressed())
+        {
+            guardar_partida.setPuntos_player(puntuacion_player.getPuntaje());
+            guardar_partida.setPuntos_COM(puntuacion_com.getPuntaje());
+            guardar_partida.grabarEnDisco();
+
+            mensaje.setMessage(12);
+            mensaje.setPath();
+            mensaje.mostrar(640, 240);
+        }
+
+        screen->refresh();
+        //refresh_screen();
+
+        if( puntuacion_com.getPuntaje() >= 30 ||
+            puntuacion_player.getPuntaje() >= 30 )
+            vuelta = false;
+
+        vuelta_mano ++;
+    }
 }

@@ -9,7 +9,6 @@ int clsButton::init(clsScreen *scr, clsEvent *ev)
     cout << "boton iniciado correctamente."<< endl;
     if(error.get()) return error.get();
 }
-
 void clsButton::mostrar(int x, int y)
 {
     setI(button);
@@ -19,7 +18,6 @@ void clsButton::mostrar(int x, int y)
 
     paste(screen->getPtr());
 }
-
 bool clsButton::disabled()
 {
     error.set(0);
@@ -54,17 +52,14 @@ bool clsButton::disabled()
     error.set(load(path));
     if(error.get()) return error.get();
 }
-
 void clsButton::setButton(int btnSelected)
 {
     button = btnSelected;
 }
-
 void clsButton::setUsed(bool value)
 {
     used = value;
 }
-
 int clsButton::setPath()
 {
     error.set(0);
@@ -142,7 +137,6 @@ int clsButton::setPath()
     error.set(load(path));
     if(error.get()) return error.get();
 }
-
 bool clsButton::pressed()
 {
     return was_click(event->getCursorX(), event->getCursorY());

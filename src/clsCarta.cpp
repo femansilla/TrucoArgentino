@@ -239,5 +239,5 @@ void clsCarta::mover_carta_com(int num_carta)
     break;
     }
 
-    paste(screen->getPtr());
+//    paste(screen->getPtr());
 }
